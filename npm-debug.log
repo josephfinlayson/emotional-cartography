@@ -1,0 +1,86 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/joe/.nvm/v0.10.33/bin/node',
+1 verbose cli   '/home/joe/.nvm/v0.10.33/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'uo' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose cache add [ 'uo', null ]
+5 verbose cache add name=undefined spec="uo" args=["uo",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'uo',
+6 verbose parsed url   path: 'uo',
+6 verbose parsed url   href: 'uo' }
+7 silly lockFile 628b7c65-uo uo
+8 verbose lock uo /home/joe/.npm/628b7c65-uo.lock
+9 silly lockFile 628b7c65-uo uo
+10 silly lockFile 628b7c65-uo uo
+11 verbose addNamed [ 'uo', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile dafcbbf8-uo uo@
+14 verbose lock uo@ /home/joe/.npm/dafcbbf8-uo.lock
+15 silly addNameRange { name: 'uo', range: '*', hasData: false }
+16 verbose request where is /uo
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id df4403d587a669ce
+19 verbose url raw /uo
+20 verbose url resolving [ 'https://registry.npmjs.org/', './uo' ]
+21 verbose url resolved https://registry.npmjs.org/uo
+22 verbose request where is https://registry.npmjs.org/uo
+23 info trying registry request attempt 1 at 15:11:18
+24 http GET https://registry.npmjs.org/uo
+25 http 404 https://registry.npmjs.org/uo
+26 verbose headers { date: 'Sun, 15 Feb 2015 15:11:19 GMT',
+26 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 verbose headers   'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '52',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   'x-served-by': 'cache-lcy1125-LCY',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1424013078.914029,VS0,VE92',
+26 verbose headers   'keep-alive': 'timeout=10, max=50',
+26 verbose headers   connection: 'Keep-Alive' }
+27 silly registry.get cb [ 404,
+27 silly registry.get   { date: 'Sun, 15 Feb 2015 15:11:19 GMT',
+27 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '52',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     'x-served-by': 'cache-lcy1125-LCY',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1424013078.914029,VS0,VE92',
+27 silly registry.get     'keep-alive': 'timeout=10, max=50',
+27 silly registry.get     connection: 'Keep-Alive' } ]
+28 silly lockFile dafcbbf8-uo uo@
+29 silly lockFile dafcbbf8-uo uo@
+30 error 404 404 Not Found: uo
+30 error 404
+30 error 404 'uo' is not in the npm registry.
+30 error 404 You should bug the author to publish it
+30 error 404
+30 error 404 Note that you can also install from a
+30 error 404 tarball, folder, or http url, or git url.
+31 error System Linux 3.13.0-45-generic
+32 error command "/home/joe/.nvm/v0.10.33/bin/node" "/home/joe/.nvm/v0.10.33/bin/npm" "install" "-g" "uo"
+33 error cwd /home/joe/www/real-emo-webservice
+34 error node -v v0.10.33
+35 error npm -v 1.4.28
+36 error code E404
+37 verbose exit [ 1, true ]

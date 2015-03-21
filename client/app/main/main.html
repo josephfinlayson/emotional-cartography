@@ -1,0 +1,20 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Emotion Tracker</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Emotions over the last 24 hours (in seconds)</h1>
+
+<!--{{emotions.allEmotions}}-->
+
+      <canvas id="bar" class="chart chart-bar" data="emotions.allEmotions"
+              labels="emotions.labels"></canvas>
+    </div>
+  </div>
+</div>
