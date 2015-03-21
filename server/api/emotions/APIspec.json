@@ -1,0 +1,17 @@
+[{
+  "emotion": {
+    "mood": "positive",
+    "type": "joy"
+  },
+  "timestampBegin": "Sun Feb 15 2015 15:33:07 GMT+0000",
+  "timestampEnd":   "Sun Feb 15 2015 15:33:17 GMT+0000"
+},
+  {
+    "emotion": {
+      "mood": "negative",
+      "type": "fear"
+    },
+    "timestampBegin": "Sun Feb 15 2015 15:34:07 GMT+0000",
+    "timestampEnd":   "Sun Feb 15 2015 15:34:17 GMT+0000"
+  }
+]
