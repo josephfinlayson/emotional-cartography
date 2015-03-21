@@ -16,10 +16,6 @@ var moment = require('moment')
 exports.index = function (req, res) {
 
   Thing.find({
-    "timestampBegin": {
-      "$gte": new Date(2012)
-      //"$lt": new Date(2015, 7, 15)
-    }
 
   }, function (err, things) {
     if (err) {
