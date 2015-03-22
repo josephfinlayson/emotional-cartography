@@ -64,7 +64,7 @@ exports.index = function (req, res) {
       thing.location = loc;
     });
     return res.json(200, things);
-  });
+  }).limit(10000);
 };
 
 // Get a single thing
