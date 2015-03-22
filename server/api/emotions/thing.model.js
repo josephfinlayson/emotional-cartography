@@ -6,7 +6,9 @@ var mongoose = require('mongoose'),
 var ThingSchema = new Schema({
   location: Object,
   timestamp: Date,
-  uuid: String
+  uuid: String,
+  hbpm: Number,
+  positivity: Number
 });
 
 module.exports = mongoose.model('Thing', ThingSchema);

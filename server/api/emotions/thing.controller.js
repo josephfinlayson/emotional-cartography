@@ -15,16 +15,46 @@ var moment = require('moment')
 // Get list of things
 exports.index = function (req, res) {
 
-  Thing.find({
-
-  }, function (err, things) {
+  Thing.find({}, function (err, things) {
     if (err) {
       return handleError(res, err);
     }
     things.forEach(function (thing) {
+        //group objects that have similar timestamps
 
+        //grab the timestamp of the first object
+        var time = moment(thing.timestamp);
+        var relevantThings = []
+        //check if an object in the array has a similar timestamp
+        things.forEach(
+          function(thingToCompare){
+          var timeToCompare = moment(thingToCompare.timestamp);
+            if (time.isSame(timeToCompare, 'minute')){
+              //splice the timeToCompare from the array
+              things.splice(thingToCompare, 1)
+              //take an average from the key values! be
+              relevantThings.push(thingToCompare);
+            }
+        })
 
-    })
+      var hpbmArr = []
+      var positivityArr = []
+
+      relevantThings.forEach(function(rThing){
+        if (rThing.hpbm) {
+          hpbmArr.push(rThing.hpbm)
+        }
+
+        if (rThing.positivity) {
+          positivityArr.push(rThing.positivity)
+        }
+
+      })
+
+      thing.hbpm =  hpbmArr.reduce(function(a, b){return a+b;})/hpbmArr.length;
+      thing.positivity=  positivityArr.reduce(function(a, b){return a+b;})/positivityArr.length;
+
+    });
     return res.json(200, things);
   });
 };
@@ -45,22 +75,25 @@ exports.show = function (req, res) {
 // Creates a new thing in the DB.
 exports.create = function (req, res) {
   var objectsSaved = [];
-  req.body.forEach(function (geoObject, index) {
+  try {
+    req.body.forEach(function (geoObject, index) {
+      geoObject.timestamp = moment();                                                                    //15022015214741857
+      Thing.create(geoObject, function (err, geoObject) {
+        if (err) {
+          return handleError(res, err);
+        }
+        else {
+          objectsSaved.push(geoObject);
+        }
 
-    geoObject.timestamp  = moment(geoObject.timestamp);                                                                    //15022015214741857
-    Thing.create(geoObject, function (err, geoObject) {
-      if (err) {
-        return handleError(res, err);
-      }
-      else {
-        objectsSaved.push(geoObject);
-      }
-
-      if (index === req.body.length - 1) {
-        return res.json(201, {savedObjects: objectsSaved.length});
-      }
-    });
-  })
+        if (index === req.body.length - 1) {
+          return res.json(201, {savedObjects: objectsSaved.length});
+        }
+      });
+    })
+  } catch (e) {
+    res.send(JSON.stringify({error: e, body: req.body}))
+  }
 
 };
 
