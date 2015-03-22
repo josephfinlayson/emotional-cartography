@@ -19,31 +19,33 @@ exports.index = function (req, res) {
     if (err) {
       return handleError(res, err);
     }
+    var thingsToSend=  [];
     things.forEach(function (thing) {
-        //group objects that have similar timestamps
+      //group objects that have similar timestamps
 
-        //grab the timestamp of the first object
-        var time = moment(thing.timestamp);
-        var relevantThings = []
-        //check if an object in the array has a similar timestamp
-        things.forEach(
-          function(thingToCompare){
+      //grab the timestamp of the first object
+      var time = moment(thing.timestamp);
+      var relevantThings = [];
+      //check if an object in the array has a similar timestamp
+      things.forEach(
+        function (thingToCompare) {
           var timeToCompare = moment(thingToCompare.timestamp);
-            if (time.isSame(timeToCompare, 'minute')){
+          if (time.isSame(timeToCompare, 'minute')) {
 
-              //splice the timeToCompare from the array
-              things.splice(thingToCompare, 1)
-              //take an average from the key values! be
+            //splice the timeToCompare from the array
+            things.splice(thingToCompare, 1)
+            //take an average from the key values! be
 
-              relevantThings.push(thingToCompare);
-            }
+            relevantThings.push(thingToCompare);
+          }
         })
+
 
       var hpbmArr = []
       var positivityArr = []
-      var loc = {};
+      var loc = {}
 
-      relevantThings.forEach(function(rThing){
+      relevantThings.forEach(function (rThing) {
         if (rThing.hpbm) {
           hpbmArr.push(rThing.hpbm)
         }
@@ -57,15 +59,20 @@ exports.index = function (req, res) {
       });
 
       if (!_.isEmpty(hpbmArr)) {
-        thing.hbpm =  hpbmArr.reduce(function(a, b){return a+b;})/hpbmArr.length;
+        thing.hbpm = hpbmArr.reduce(function (a, b) {
+          return a + b;
+        }) / hpbmArr.length;
       }
 
       if (!_.isEmpty(positivityArr)) {
-        thing.positivity=  positivityArr.reduce(function(a, b){return a+b;})/positivityArr.length;
+        thing.positivity = positivityArr.reduce(function (a, b) {
+          return a + b;
+        }) / positivityArr.length;
       }
       thing.location = loc;
+      thingsToSend.push(thing)
     });
-    return res.json(200, things);
+      return res.json(200, thingsToSend);
   }).limit(1000000000);
 };
 
