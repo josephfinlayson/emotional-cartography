@@ -30,9 +30,11 @@ exports.index = function (req, res) {
           function(thingToCompare){
           var timeToCompare = moment(thingToCompare.timestamp);
             if (time.isSame(timeToCompare, 'minute')){
+
               //splice the timeToCompare from the array
               things.splice(thingToCompare, 1)
               //take an average from the key values! be
+
               relevantThings.push(thingToCompare);
             }
         })
@@ -49,8 +51,8 @@ exports.index = function (req, res) {
         if (rThing.positivity) {
           positivityArr.push(rThing.positivity)
         }
-        if (rThing.loc) {
-          loc = rThing.loc;
+        if (rThing.location) {
+          loc = rThing.location;
         }
       });
 
@@ -64,7 +66,7 @@ exports.index = function (req, res) {
       thing.location = loc;
     });
     return res.json(200, things);
-  }).limit(10000);
+  }).limit(1000000000);
 };
 
 // Get a single thing
