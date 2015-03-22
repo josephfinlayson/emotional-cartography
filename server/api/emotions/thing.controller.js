@@ -39,6 +39,7 @@ exports.index = function (req, res) {
 
       var hpbmArr = []
       var positivityArr = []
+      var loc = {};
 
       relevantThings.forEach(function(rThing){
         if (rThing.hpbm) {
@@ -48,11 +49,18 @@ exports.index = function (req, res) {
         if (rThing.positivity) {
           positivityArr.push(rThing.positivity)
         }
-
+        if (rThing.loc) {
+          loc = rThing.loc;
+        }
       })
 
-      thing.hbpm =  hpbmArr.reduce(function(a, b){return a+b;})/hpbmArr.length;
-      thing.positivity=  positivityArr.reduce(function(a, b){return a+b;})/positivityArr.length;
+      if (!_.isEmpty(hpbmArr)) {
+        thing.hbpm =  hpbmArr.reduce(function(a, b){return a+b;})/hpbmArr.length;
+      }
+
+      if (!_.isEmpty(positivityArr)) {
+        thing.positivity=  positivityArr.reduce(function(a, b){return a+b;})/positivityArr.length;
+      }
 
     });
     return res.json(200, things);
