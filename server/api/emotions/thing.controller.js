@@ -52,7 +52,7 @@ exports.index = function (req, res) {
         if (rThing.loc) {
           loc = rThing.loc;
         }
-      })
+      });
 
       if (!_.isEmpty(hpbmArr)) {
         thing.hbpm =  hpbmArr.reduce(function(a, b){return a+b;})/hpbmArr.length;
@@ -61,7 +61,7 @@ exports.index = function (req, res) {
       if (!_.isEmpty(positivityArr)) {
         thing.positivity=  positivityArr.reduce(function(a, b){return a+b;})/positivityArr.length;
       }
-
+      thing.location = loc;
     });
     return res.json(200, things);
   });
