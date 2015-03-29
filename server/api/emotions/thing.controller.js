@@ -15,7 +15,11 @@ var moment = require('moment')
 // Get list of things
 exports.index = function (req, res) {
 
-  Thing.find({}, function (err, things) {
+  Thing.find({
+    hbpm: {
+      $ne: 0
+    }
+  }, function (err, things) {
     if (err) {
       return handleError(res, err);
     }
@@ -38,7 +42,7 @@ exports.index = function (req, res) {
 
             relevantThings.push(thingToCompare);
           }
-        })
+        });
 
       var hpbmArr = []
       var positivityArr = []
