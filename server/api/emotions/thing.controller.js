@@ -38,8 +38,7 @@ exports.index = function (req, res) {
 
             relevantThings.push(thingToCompare);
           }
-        });
-
+        })
 
       var hpbmArr = []
       var positivityArr = []
