@@ -30,7 +30,7 @@ exports.index = function (req, res) {
       things.forEach(
         function (thingToCompare) {
           var timeToCompare = moment(thingToCompare.timestamp);
-          if (time.isSame(timeToCompare, 'minute')) {
+            if (time.isBetween(timeToCompare.subtract(5, 'seconds'), timeToCompare.add(5, 'seconds'))) {
 
             //splice the timeToCompare from the array
             things.splice(thingToCompare, 1)
@@ -38,7 +38,7 @@ exports.index = function (req, res) {
 
             relevantThings.push(thingToCompare);
           }
-        })
+        });
 
 
       var hpbmArr = []
