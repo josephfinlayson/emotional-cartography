@@ -20,6 +20,7 @@ exports.index = function (req, res) {
       $ne: 0
     }
   }, function (err, things) {
+    res.send(things);
     if (err) {
       return handleError(res, err);
     }
@@ -39,8 +40,8 @@ exports.index = function (req, res) {
             //splice the timeToCompare from the array
             things.splice(thingToCompare, 1)
             //take an average from the key values! be
-
             relevantThings.push(thingToCompare);
+
           }
         });
 
